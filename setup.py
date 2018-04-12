@@ -9,7 +9,7 @@ def read(filename):
 
 
 setup(
-    name='django-storages',
+    name='django-storages-getblobfix',
     version=storages.__version__,
     packages=['storages', 'storages.backends'],
     extras_require={
@@ -26,7 +26,7 @@ setup(
     license='BSD',
     description='Support for many storage backends in Django',
     long_description=read('README.rst') + '\n\n' + read('CHANGELOG.rst'),
-    url='https://github.com/jschneier/django-storages',
+    url='https://github.com/debsilver/django-storages-getblobfix',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
@@ -44,6 +44,5 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
-    test_suite='tests',
     zip_safe=False
 )
