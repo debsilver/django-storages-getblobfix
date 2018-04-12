@@ -90,6 +90,8 @@ class GoogleCloudStorage(Storage):
     # The max amount of memory a returned file can take up before being
     # rolled over into a temporary file on disk. Default is 0: Do not roll over.
     max_memory_size = setting('GS_MAX_MEMORY_SIZE', 0)
+    base_url = setting('GS_CDN_BASE_URL', None)
+
 
     def __init__(self, **settings):
         # check if some of the settings we've provided as class attributes
@@ -243,8 +245,11 @@ class GoogleCloudStorage(Storage):
     def url(self, name):
         # Preserve the trailing slash after normalizing the path.
         name = self._normalize_name(clean_name(name))
-        blob = self._get_blob(self._encode_name(name))
-        return blob.public_url
+        if self.base_url:
+            return self.base_url + name
+        else:
+            blob = self._get_blob(self._encode_name(name))
+            return blob.public_url
 
     def get_available_name(self, name, max_length=None):
         if self.file_overwrite:
