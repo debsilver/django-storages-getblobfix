@@ -9,7 +9,7 @@ def read(filename):
 
 
 setup(
-#     name='django-storages-getblobfix',
+    name='django-storages-getblobfix',
     version=storages.__version__,
     packages=['storages', 'storages.backends'],
     extras_require={
